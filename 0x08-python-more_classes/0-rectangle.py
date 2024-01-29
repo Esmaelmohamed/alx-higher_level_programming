@@ -1,5 +1,5 @@
 #!/usr/bin/python3
 
-class Reactangle:
-    """Represent a rectangle """ 
-    pass 
+class Rectangle:
+    """Represent a rectangle"""
+    pass
