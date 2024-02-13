@@ -1,6 +1,4 @@
-Certainly! Below is the revised README file with the requested modifications:
 
----
 
 # README
 

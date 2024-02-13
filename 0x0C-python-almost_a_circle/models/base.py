@@ -6,7 +6,7 @@ import csv
 import turtle
 
 
-class BaseModel:
+class Base:
     """Base model.
 
     This Represents the "base" for all other classes in project 0x0C*.
@@ -26,8 +26,8 @@ class BaseModel:
         if identity is not None:
             self.identity = identity
         else:
-            BaseModel.__nb_objects += 1
-            self.identity = BaseModel.__nb_objects
+            Base.__nb_objects += 1
+            self.identity = Base.__nb_objects
 
     @staticmethod
     def to_json(list_dicts):
@@ -53,7 +53,7 @@ class BaseModel:
                 jsonfile.write("[]")
             else:
                 list_dicts = [obj.to_dictionary() for obj in list_instances]
-                jsonfile.write(BaseModel.to_json(list_dicts))
+                jsonfile.write(Base.to_json(list_dicts))
 
     @staticmethod
     def from_json(json_string):
@@ -97,7 +97,7 @@ class BaseModel:
         filename = str(cls.__name__) + ".json"
         try:
             with open(filename, "r") as jsonfile:
-                list_dicts = BaseModel.from_json(jsonfile.read())
+                list_dicts = Base.from_json(jsonfile.read())
                 return [cls.instantiate(**d) for d in list_dicts]
         except IOError:
             return []
