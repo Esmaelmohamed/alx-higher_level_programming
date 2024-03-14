@@ -1,6 +1,5 @@
--- Script to update the score of Bob to 10 in the table second_table
-
--- Update the score of Bob to 10
-USE `hbtn_0c_0`;
-UPDATE second_table SET score = 10 WHERE name = 'Bob';
+-- Update the score column in second_table where name is "Bob" to 10
+UPDATE `second_table`
+SET `score` = 10
+WHERE `name` = 'Bob';
 
