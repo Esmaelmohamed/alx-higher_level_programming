@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Lists states"""
+""" new list states """
 
 import MySQLdb
 from sys import argv
