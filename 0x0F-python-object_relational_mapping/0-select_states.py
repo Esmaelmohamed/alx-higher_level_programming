@@ -1,42 +1,42 @@
+#!/usr/bin/python3
+"""Lists states from the database"""
+
 import MySQLdb
-import sys
+from sys import argv
 
 def list_states(username, password, database):
-    # Connect to MySQL server
     try:
-        db = MySQLdb.connect(host="localhost",
-                             user=username,
-                             passwd=password,
-                             db=database,
-                             port=3306)
-        cursor = db.cursor()
+        # Connect to MySQL server
+        conn = MySQLdb.connect(host="localhost", port=3306, user=username,
+                               passwd=password, db=database, charset="utf8")
+        cur = conn.cursor()
 
         # Execute SQL query to retrieve states
-        cursor.execute("SELECT * FROM states ORDER BY id ASC")
+        cur.execute("SELECT * FROM states ORDER BY states.id ASC")
         
         # Fetch all rows and print results
-        states = cursor.fetchall()
-        for state in states:
-            print(state)
+        query_rows = cur.fetchall()
+        for row in query_rows:
+            print(row)
 
         # Close cursor and database connection
-        cursor.close()
-        db.close()
+        cur.close()
+        conn.close()
 
     except MySQLdb.Error as e:
         print("MySQL Error: {}".format(e))
-        sys.exit(1)
+        return None
 
 if __name__ == "__main__":
     # Check if all three arguments are provided
-    if len(sys.argv) != 4:
+    if len(argv) != 4:
         print("Usage: python script.py <username> <password> <database>")
-        sys.exit(1)
+        exit(1)
     
     # Extract arguments
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
+    username = argv[1]
+    password = argv[2]
+    database = argv[3]
 
     # Call function to list states
     list_states(username, password, database)
