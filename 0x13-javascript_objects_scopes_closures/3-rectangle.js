@@ -14,6 +14,16 @@ class Rectangle {
       [this.width, this.height] = [w, h];
     }
   }
+
+  /**
+   * Prints a visual representation of the rectangle.
+   */
+  print() {
+    // Print each row of the rectangle with 'X' characters
+    for (let i = 0; i < this.height; i++) {
+      console.log('X'.repeat(this.width));
+    }
+  }
 }
 
 module.exports = Rectangle;
